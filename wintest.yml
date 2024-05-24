@@ -1,0 +1,15 @@
+---
+- name: Test Windows Ansible Task
+  hosts: windows
+  tasks:
+    - name: Check WinRM connectivity
+      win_ping:
+
+    - name: Get system information
+      win_shell: systeminfo
+      register: systeminfo
+
+    - name: Display system information
+      debug:
+        var: systeminfo.stdout_lines
+
