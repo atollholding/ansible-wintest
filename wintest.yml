@@ -5,6 +5,14 @@
     - name: Check WinRM connectivity
       win_ping:
 
+    - name: Get my user info
+      ansible.windows.win_whoami:
+      register: whoami_result
+    
+    - name: Display user information
+      debug:
+        var: whoami_result
+
     - name: Get system information
       win_shell: systeminfo
       register: systeminfo
@@ -12,4 +20,3 @@
     - name: Display system information
       debug:
         var: systeminfo.stdout_lines
-
